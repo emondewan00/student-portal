@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu-item {
+  @apply text-lg py-2 md:py-0;
+}
+
+nav {
+    @apply flex flex-col gap-4
+}
+
+nav .footer-title {
+  @apply font-semibold;
+}
+
+nav .link-hover{
+@apply text-gray-300
+}
