@@ -10,14 +10,23 @@ const Register = () => {
   const registerHandler = (e) => {
     e.preventDefault();
     emailAndPass(email, password)
-      .then((res) =>
+      .then((res) => {
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          body: JSON.stringify({ email }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
         Swal.fire({
           title: "Good job!",
           text: "You have successfully logged in.",
           icon: "success",
-        })
-        
-      )
+        });
+      })
       .catch((err) => console.log(err));
   };
   return (
@@ -32,7 +41,7 @@ const Register = () => {
           <h1 className="text-4xl font-bold text-center">Register</h1>
           {/* {err && <h3 className=" my-4 p-2 rounded bg-rose-600">{err} </h3>} */}
           <button
-            onClick={googleHandlear}
+            onClick={() => googleHandlear("register")}
             className="bg-white shadow flex gap-x-4 p-4 rounded w-full justify-center my-4 "
           >
             <img src="/google.png" className="w-6" alt="" />

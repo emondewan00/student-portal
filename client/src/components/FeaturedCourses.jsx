@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
 
 const FeaturedCourses = () => {
-  const courses = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/courses")
+      .then((res) => res.json())
+      .then((data) => setCourses(data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className="max-w-5xl mx-auto my-20 px-4 md:px-4">
       <h1 className="text-3xl font-semibold text-center "> Featured Coures</h1>
@@ -11,8 +18,8 @@ const FeaturedCourses = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-x-4 gap-y-8 my-8 px-8 md:px-0">
-        {courses.map((course) => (
-          <CourseCard key={course} />
+        {courses?.data?.slice(0, 8).map((course) => (
+          <CourseCard key={course._id} course={course} />
         ))}
       </div>
       <div className="text-center">
