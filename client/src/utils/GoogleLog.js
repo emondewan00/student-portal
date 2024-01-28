@@ -9,7 +9,7 @@ const googleHandlear = (register) => {
     .then((res) => {
       if (register) {
         console.log(register);
-        fetch("https://student-portal-server-beta.vercel.app///localhost:5000/users", {
+        fetch("https://student-portal-server-beta.vercel.app/users", {
           method: "POST",
           body: JSON.stringify({ email: res.user.email }),
           headers: {

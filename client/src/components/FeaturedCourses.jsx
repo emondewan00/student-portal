@@ -4,7 +4,7 @@ import CourseCard from "./CourseCard";
 const FeaturedCourses = () => {
   const [courses, setCourses] = useState([]);
   useEffect(() => {
-    fetch("https://student-portal-server-beta.vercel.app///localhost:5000/courses")
+    fetch("https://student-portal-server-beta.vercel.app/courses")
       .then((res) => res.json())
       .then((data) => setCourses(data))
       .catch((err) => console.log(err));
