@@ -11,7 +11,7 @@ const Register = () => {
     e.preventDefault();
     emailAndPass(email, password)
       .then((res) => {
-        fetch("http://localhost:5000/users", {
+        fetch("https://student-portal-server-beta.vercel.app///localhost:5000/users", {
           method: "POST",
           body: JSON.stringify({ email }),
           headers: {
